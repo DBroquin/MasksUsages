@@ -15,6 +15,7 @@ jobs:
 
       - name: build
         run: |
+          echo "${{ secrets.ENV }}" > .env
           yarn
           yarn build
 
