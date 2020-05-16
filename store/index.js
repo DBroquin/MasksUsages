@@ -15,6 +15,8 @@ export const mutations = {
 export const actions = {
   async onAuthStateChangedAction({ commit, dispatch }, { authUser, claims }) {
     if (!authUser) {
+      this.$router.push({ path: '/login' })
+
       await dispatch('cleanupAction')
     } else {
       const { uid, email, emailVerified, displayName, photoURL } = authUser
@@ -64,7 +66,10 @@ export const actions = {
       .doc(doc)
       .update(mask)
   },
-  async deleteAccount({ state, dispatch }) {
+  async logout() {
+    await this.$fireAuth.signOut()
+  },
+  async deleteAccount({ state }) {
     const masks = await this.$fireStoreObj()
       .collection('masks')
       .where('user_uid', '==', state.user.uid)
@@ -72,7 +77,15 @@ export const actions = {
 
     masks.forEach(mask => mask.ref.delete())
 
-    dispatch('cleanupAction')
+    let provider = this.$fireAuth.currentUser.providerData[0].providerId.split(
+      '.'
+    )[0]
+    provider = provider.charAt(0).toUpperCase() + provider.slice(1)
+
+    await this.$fireAuth.currentUser.reauthenticateWithPopup(
+      new this.$fireAuthObj[`${provider}AuthProvider`]()
+    )
+    await this.$fireAuth.currentUser.delete()
   },
   async authProvider({ dispatch }, provider) {
     const result = await this.$fireAuth.signInWithPopup(

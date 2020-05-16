@@ -3,16 +3,7 @@
     <div class="flex justify-between h-16">
       <div class="flex">
         <div class="flex-shrink-0 flex items-center">
-          <img
-            class="block lg:hidden h-8 w-auto"
-            src="/img/logos/workflow-mark-on-white.svg"
-            alt="Workflow logo"
-          />
-          <img
-            class="hidden lg:block h-8 w-auto"
-            src="/img/logos/workflow-logo-on-white.svg"
-            alt="Workflow logo"
-          />
+          <img class="block h-8 w-auto" src="~/assets/images/logo.png" alt="Masks logo" />
         </div>
       </div>
       <div class="ml-6 flex items-center">
@@ -93,6 +84,7 @@
                 <a
                   href="#"
                   class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                  @click="logout"
                 >Déconnexion</a>
               </div>
             </div>
@@ -110,7 +102,7 @@
 import AddMaskModal from '~/components/AddMaskModal'
 import DeleteAccountAction from '~/components/DeleteAccountAction'
 import ClickOutside from 'vue-click-outside'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Top',
@@ -140,7 +132,8 @@ export default {
     },
     close() {
       this.showDropdown = false
-    }
+    },
+    ...mapActions(['logout'])
   }
 }
 </script>
