@@ -1,6 +1,5 @@
-# MasksUsage
+# Masks Usage
 
-> My tiptop Nuxt.js project
 
 ## Build Setup
 
