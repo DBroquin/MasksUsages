@@ -13,10 +13,16 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css'
+      }
+    ]
   },
   loading: { color: '#fff' },
-  css: [],
   plugins: [],
   buildModules: ['@nuxtjs/tailwindcss'],
   modules: [

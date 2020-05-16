@@ -57,8 +57,6 @@ import Multiselect from 'vue-multiselect'
 import { mapState } from 'vuex'
 import Top from '~/components/Top'
 
-import 'vue-multiselect/dist/vue-multiselect.min.css'
-
 export default {
   components: { Top, Multiselect, AddMaskModal },
   middleware: 'authMiddleware',
