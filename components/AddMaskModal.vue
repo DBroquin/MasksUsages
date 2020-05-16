@@ -68,7 +68,7 @@
                   v-model="mask.port_duration"
                   :placeholder="4"
                   id="port_duration"
-                  label="Temps de port"
+                  label="Temps de port (h)"
                   type="number"
                   class="mt-6"
                 />
@@ -76,7 +76,7 @@
                   v-model="mask.lifetime"
                   :placeholder="40"
                   id="lifetime"
-                  label="Nombre de port"
+                  label="Nombre de port / Lavage"
                   type="number"
                   class="mt-6"
                 />
