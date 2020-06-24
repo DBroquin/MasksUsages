@@ -1,21 +1,30 @@
-# Masks Usage
+# Mask Usage
 
+This application allow users to count times their have used their reusable masks.
 
-## Build Setup
+You can acces a public instance of the app at [masks.dhonnabhain.me](https://masks.dhonnabhain.me)
 
-```bash
-# install dependencies
-$ yarn install
+## Data storage
+It does not store any personal informations like names, age. Only data about users masks are stored (name, port duration time and max wash authorized number)
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+## Build
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+You are free to build and host your own version of this application
+This application use Firebase as back-end, so if you want to host your own version, you should start by create an app on your Firebase console.
 
-# generate static project
-$ yarn generate
+### Firebase requirement
+On your Firebase console, you must enable authentication with Facebook / Google authentication and a masks collection in the app database.
+
+### Run local dev mode
+```shell
+yarn dev
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### Deploy
+Static version is recommended to make it simplier to host.
+
+```shell
+yarn build
+```
+
+Once you have built the app, you should put it in S3 or in any other static app host provider (Firebase, Vercel, ...)
