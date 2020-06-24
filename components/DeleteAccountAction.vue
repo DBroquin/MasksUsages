@@ -1,6 +1,7 @@
 <template>
   <div
-    class="fixed bottom-0 inset-x-0 px-4 pb-6 sm:inset-0 sm:p-0 sm:flex sm:items-center sm:justify-center z-10"
+    :class="{'fixed bottom-0 inset-x-0 px-4 pb-6': containerShow}"
+    class="sm:inset-0 sm:p-0 sm:flex sm:items-center sm:justify-center z-10"
   >
     <transition
       enter-active-class="ease-out duration-300"
@@ -22,6 +23,8 @@
       leave-active-class="ease-in duration-200"
       leave-class="opacity-100 translate-y-0 sm:scale-100"
       leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      @before-enter="containerShow = true"
+      @after-leave="containerShow = false"
     >
       <div
         v-if="show"
@@ -62,6 +65,7 @@ export default {
   },
   data() {
     return {
+      containerShow: false,
       deleted: false
     }
   },
